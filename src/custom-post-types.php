@@ -14,7 +14,7 @@ add_action( 'init', function() {
 	$args = [
 		'labels'       => $labels,
 		'show_in_rest' => true,
-		'rest_base'    => esc_html__( 'superheros' ),
+		'rest_base'    => esc_html( 'superheros' ),
 		'public'       => true,
 	];
 	register_post_type( get_type_superhero(), $args );
