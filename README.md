@@ -10,7 +10,7 @@ database will make getting started easier).
 ### Site URL
 The database that you import assumes a local url of `http://vue-wordpress.dev`. 
 
-🚨🚨🚨🚨🚨 **If your local URL is not `http://vue-wordpress.dev`, add the site url and home url constants in `wp-config.php`:**
+🚨🚨 **If your local URL is not `http://vue-wordpress.dev`, add the site url and home url constants in `wp-config.php`:**
 
 ```php
 /*
