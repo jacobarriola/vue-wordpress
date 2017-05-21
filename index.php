@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head><?php wp_head(); ?></head>
-<body>
+<?php
+get_header(); ?>
     <div id="app">{{ message }}</div>
     <?php
     wp_footer(); ?>
