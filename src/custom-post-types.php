@@ -15,7 +15,7 @@ add_action( 'init', function() {
 		'labels'       => $labels,
 		'show_in_rest' => true,
 		'rest_base'    => esc_html__( 'superheros' ),
-		'show_ui'      => true,
+		'public'       => true,
 	];
 	register_post_type( get_type_superhero(), $args );
 } );
