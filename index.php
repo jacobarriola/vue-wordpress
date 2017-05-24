@@ -1,7 +1,4 @@
 <?php
-get_header(); ?>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="https://unpkg.com/vue"></script>
 
 namespace Vue_WP;
 
