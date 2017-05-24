@@ -1,6 +1,9 @@
 # Vue WordPress
-This is a demo theme I used for my
-WordCamp Orange County Vue workshop.
+These are the Vue.js exercises for my WordCamp Orange County Vue workshop.
+
+This theme includes some Vue basics as well as an instance that interacts with the WP REST API via a search with filters.
+
+
 
 ## Getting started
 1. Clone or download this theme inside of `wp-content/themes`
