@@ -20,4 +20,11 @@ add_action( 'wp_enqueue_scripts', function() {
 		false
 	);
 
+	wp_enqueue_style(
+		'css',
+		get_stylesheet_uri(),
+		null,
+		wp_get_theme()->version
+	);
+
 });
