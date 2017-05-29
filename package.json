@@ -1,0 +1,23 @@
+{
+  "name": "vue-wordpress",
+  "description": "These are the Vue.js exercises for my WordCamp Orange County Vue workshop.",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {
+    "browser-sync": "^2.18.12"
+  },
+  "dependencies": {},
+  "scripts": {
+    "dev": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacobarriola/vue-wordpress.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jacobarriola/vue-wordpress/issues"
+  },
+  "homepage": "https://github.com/jacobarriola/vue-wordpress#readme"
+}
