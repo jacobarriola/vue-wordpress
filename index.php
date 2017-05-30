@@ -10,4 +10,4 @@ echo get_method_exercise();
 echo get_bind_exercise();
 echo get_search_exercise();
 
-wp_footer();
+get_footer();
