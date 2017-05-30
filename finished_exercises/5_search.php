@@ -6,53 +6,52 @@ function get_search_exercise() {
 
 	ob_start(); ?>
 
-	<div id="searchApp">
-		<h2>Search 🔍</h2>
-		<form v-on:submit.prevent="runSearch(keywords)">
-			<input type="search" v-model="keywords">
-			<input type="submit" value="Search">
-		</form>
-		<div v-for="{title, content} in superheros">
-			<h2>{{ title.rendered }}</h2>
-			<p v-html="content.rendered"></p>
-		</div>
-		<div>
-			<h3>Gender</h3>
-			<div v-for="{id, name} in genders">
-				<label :for="id">
-					<input :id="id" :value="id" @click="runSearch" v-model="checkedGenders" type="checkbox">
-					{{ name }}
-				</label>
-			</div>
-		</div>
-	</div>
+    <div id="searchApp">
+        <h1>Search for a superhero 🕵️🚀‍️</h1>
+        <form v-on:submit.prevent="runSearch">
+            <input type="text" placeholder="Enter a name" v-model="keyword">
+            <button>Search</button>
+        </form>
+        <ul class="genders">
+            <li v-for="gender in genders">
+                <label v-bind:for="gender.id">
+                    <input v-on:click="runSearch" v-bind:id="gender.id" v-bind:value="gender.id" type="checkbox" v-model="clickedGenders">
+                    {{ gender.name }} ({{ gender.count }})
+                </label>
+            </li>
+        </ul>
+        <ul class="list">
+            <li class="superhero" v-for="superhero in superheros">
+                <h3>{{superhero.title.rendered}}</h3>
+                <p v-html="superhero.content.rendered" v-if="superhero.content.rendered"></p>
+                <a v-bind:href="superhero.link">Read More -></a>
+            </li>
+        </ul>
+    </div>
 	<script>
-		const url = 'http://vue-wordpress.dev/wp-json/wp/v2';
+		const endpoint = 'http://vue-wordpress.dev/wp-json/wp/v2';
 		const searchApp = new Vue({
 			el: '#searchApp',
 			data: {
-				keywords: '',
+				keyword: '',
 				superheros: [],
 				genders: [],
-				checkedGenders: []
+				clickedGenders: []
 			},
 			methods: {
-				runSearch(keywords) {
-					if ( 0 === this.checkedGenders.length && this.keywords === '' ) {
-						return this.superheros = [];
+				runSearch() {
+					if ( 0 === this.clickedGenders.length ) {
+						return this.keywordSearch();
 					}
-					if ( 0 === this.checkedGenders.length ) {
-						axios.get(`${url}/superheros?search=${this.keywords}`)
-							.then( response => this.superheros = response.data );
-						return;
-					}
-					axios.get(`${url}/superheros?search=${this.keywords}&gender=${this.checkedGenders}`)
-						.then( response => this.superheros = response.data );
+					axios.get(`${endpoint}/superheros?search=${this.keyword}&gender=${this.clickedGenders}`).then(response => this.superheros = response.data);
+				},
+				keywordSearch() {
+					axios.get(`${endpoint}/superheros?search=${this.keyword}`).then(response => this.superheros = response.data);
 				}
 			},
 			created() {
-				axios.get(`${url}/gender`)
-					.then( response => this.genders = response.data );
+				this.keywordSearch();
+				axios.get(endpoint + '/gender').then(response => this.genders = response.data);
 			}
 		});
 	</script>
