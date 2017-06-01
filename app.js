@@ -2,5 +2,6 @@ const browserSync = require('browser-sync');
 
 browserSync({
 	proxy: 'http://vue-wordpress.dev',
-	files: ['**/*.php']
+	files: ['**/*.php'],
+	notify: false
 });
